@@ -1,4 +1,3 @@
-import agent from './agent';
 
 const promiseMiddleware = store => next => action => {
 	if (isPromise(action.payload)){

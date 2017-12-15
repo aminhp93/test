@@ -1,19 +1,15 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Test from './Test';
-import Header from './Header';
 
+import Header from './Header';
 
 class App extends React.Component {
  
   render() {
     return (
       <div>
-      	<Header></Header>
-       	<Switch>
-       		<Route path="/test" component={Test} />
-       	</Switch>
-       	<div>App</div>
+        <Header></Header>
+       	<div>App1 Content</div>
+
       </div>
     );
   }
