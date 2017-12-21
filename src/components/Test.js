@@ -43,8 +43,8 @@ const mapStateToProps = function(state, ownProps){
 };
 
 const mapDispatchToProps = {  
-  // activateGeod,
-  // closeGeod
+  activateGeod,
+  closeGeod
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Test);

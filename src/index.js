@@ -9,7 +9,6 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import App from './components/App';
 import Test from './components/Test';
-import ItemList from './components/ItemList';
 
 ReactDOM.render((
   <Provider store={store}>
@@ -17,7 +16,6 @@ ReactDOM.render((
       <Switch>
       	<Route exact path="/" component={App} />
         <Route path="/test" component={Test} />
-        <Route path="/items" component={ItemList} />
       </Switch>
     </ConnectedRouter>
   </Provider>
