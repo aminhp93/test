@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addItem } from '../actions/index.js';
+import { addItem, toggleTodo } from '../actions/index.js';
 
 class Todos extends Component {
 
@@ -13,7 +13,7 @@ class Todos extends Component {
 	handleOnSubmit(e){
 		e.preventDefault();
 		this.props.addItem(this.textInput.value)
-		this.textInput.value = ''
+		this.textInput.value = '';
 	}
 
 	render() {
@@ -26,12 +26,19 @@ class Todos extends Component {
 					}}/>
 					<button type='submit'>Add Todo</button>
 				</form>
-				
-				{this.props.todoList.map((item) => {
-					return (
-						<li key={item.id}>{item.title}</li>
-					)
-				})}
+
+				<ul>
+					{this.props.todoList.map((item) => {
+						return (
+							<li 
+								key={item.id}
+								onClick={() => this.props.toggleTodo(item.id)}
+								style={{ textDecoration: item.completed ? 'line-through' : 'none'}}>
+								{item.title} {item.completed}
+							</li>
+						)
+					})}
+				</ul>
 
 			</div>
 		);
@@ -41,12 +48,14 @@ class Todos extends Component {
 const mapStateToProps = (state) => {
 	console.log(state)
 	return {
-		todoList: state.todos
+		todoList: state.todos,
+		completed: state.completed
 	}
 }
 
 const mapDispatchToProps = {
-	addItem
+	addItem,
+	toggleTodo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todos)

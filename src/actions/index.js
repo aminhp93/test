@@ -15,3 +15,8 @@ export const addItem = function(text){
 		text
 	}
 }
+
+export const toggleTodo = (id) => ({
+	type: 'TOGGLE_TODO',
+	id
+})
