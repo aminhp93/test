@@ -9,6 +9,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import App from './components/App';
 import Test from './components/Test';
+import Todos from './components/Todos';
 
 ReactDOM.render((
   <Provider store={store}>
@@ -16,6 +17,7 @@ ReactDOM.render((
       <Switch>
       	<Route exact path="/" component={App} />
         <Route path="/test" component={Test} />
+        <Route path="/todos" component={Todos} />
       </Switch>
     </ConnectedRouter>
   </Provider>
