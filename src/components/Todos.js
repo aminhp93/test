@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { addItem, toggleTodo } from '../actions/index.js';
+import Footer from './Footer';
+
+
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case 'SHOW_ALL':
+      return todos
+    case 'SHOW_COMPLETED':
+      return todos.filter(t => t.completed)
+    case 'SHOW_ACTIVE':
+      return todos.filter(t => !t.completed)
+    default:
+      throw new Error('Unknown filter: ' + filter)
+  }
+}
 
 class Todos extends Component {
 
@@ -39,6 +54,7 @@ class Todos extends Component {
 						)
 					})}
 				</ul>
+				<Footer></Footer>
 
 			</div>
 		);
@@ -46,10 +62,9 @@ class Todos extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state)
 	return {
-		todoList: state.todos,
-		completed: state.completed
+		completed: state.completed,
+		todoList: getVisibleTodos(state.todos, state.visibilityFilter)
 	}
 }
 
